@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  font-family: 'PingFang TC', 'Open Sans', '微軟正黑體', sans-serif;
+  outline: none;
+}
+
+html,
+body {
+  padding: 0;
+  font-size: 1em;
+  margin: 0;
+  background-color: #fff;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+#root {
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  appearance: none;
+  border-radius: 0;
+}
+
+textarea {
+  appearance: none;
+  border-radius: 0;
+}
+
+::placeholder {
+  color: #a8a8a8;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a::after,
+a::before {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+}
+
+img,
+img::after,
+img::before {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+}

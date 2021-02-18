@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "strictPropertyInitialization": true,
+    "skipLibCheck": true, // Be careful this config will ignore library type check
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "es5", "es2015", "es2016", "es2017", "esnext"],
+    "baseUrl": "./",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": { "customMatcher": "\\.s(a|c)ss$" }
+      }
+    ],
+    "paths": {
+      "@@core/*": ["src/core/*"]
+    }
+  },
+  "include": ["./src"]
+}

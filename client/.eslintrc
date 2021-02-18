@@ -1,0 +1,218 @@
+{
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+    "airbnb-typescript",
+    "plugin:react-hooks/recommended"
+	],
+	"plugins": [
+		"import"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"legacyDecorators": true
+    },
+    "project": "./tsconfig.json"
+	},
+	"overrides": [
+		{
+			"files": [
+				"./**/*.js"
+			],
+			"rules": {
+				"no-unused-vars": [
+					2,
+					{
+						"varsIgnorePattern": "^_",
+						"argsIgnorePattern": "^_",
+						"ignoreRestSiblings": true
+					}
+				]
+			}
+		},
+		{
+			"files": [
+				"./**/*{.ts,.tsx}"
+			],
+			"extends": [
+				"plugin:@typescript-eslint/recommended"
+			],
+			"plugins": [
+				"@typescript-eslint"
+			],
+			"rules": {
+        "import/prefer-default-export": "off",
+				"@typescript-eslint/explicit-function-return-type": 0,
+				"@typescript-eslint/no-empty-function": 0,
+				"@typescript-eslint/no-explicit-any": 0,
+				"@typescript-eslint/no-non-null-assertion": 0,
+				"@typescript-eslint/no-unused-vars": [
+					2,
+					{
+						"varsIgnorePattern": "^_",
+						"argsIgnorePattern": "^_",
+						"ignoreRestSiblings": true
+					}
+				]
+			}
+		},
+		{
+			"files": [
+				"./**/*{.ts,.tsx}"
+			],
+			"env": {
+				"browser": true
+			},
+			"extends": [
+        "plugin:@typescript-eslint/recommended",
+				"plugin:react/recommended"
+			],
+			"plugins": [
+        "@typescript-eslint",
+				"react",
+				"react-hooks"
+			],
+			"parserOptions": {
+				"project": "./tsconfig.json"
+			},
+			"globals": {
+				"NODE_ENV": "readonly",
+				"GRAPHQL_HOST": "readonly",
+        "STATIC_HOST": "readonly"
+			},
+			"settings": {
+				"react": {
+					"pragma": "React",
+					"version": "detect"
+				}
+			},
+			"rules": {
+        "jsx-a11y/label-has-associated-control": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+				"react/display-name": 0,
+				"react/jsx-no-target-blank": 0,
+        "react/prop-types": 0,
+        "react/jsx-closing-bracket-location": [
+          2,
+          {
+            "nonEmpty": "after-props",
+            "selfClosing": "after-props"
+          }
+        ],
+        "arrow-parens": [
+          2,
+          "as-needed",
+          {
+            "requireForBlockBody": true
+          }
+        ],
+        "padding-line-between-statements": [
+          2,
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": "return"
+          },
+          {
+            "blankLine": "always",
+            "prev": [
+              "const",
+              "let",
+              "var"
+            ],
+            "next": "*"
+          },
+          {
+            "blankLine": "any",
+            "prev": [
+              "const",
+              "let",
+              "var"
+            ],
+            "next": [
+              "const",
+              "let",
+              "var"
+            ]
+          },
+          {
+            "blankLine": "always",
+            "prev": "directive",
+            "next": "*"
+          },
+          {
+            "blankLine": "any",
+            "prev": "directive",
+            "next": "directive"
+          },
+          {
+            "blankLine": "always",
+            "prev": "block-like",
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "multiline-const",
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "multiline-expression",
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "multiline-let",
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "multiline-var",
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "switch",
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "import",
+            "next": "*"
+          },
+          {
+            "blankLine": "any",
+            "prev": "import",
+            "next": "import"
+          },
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": "case"
+          },
+          {
+            "blankLine": "any",
+            "prev": "case",
+            "next": "case"
+          },
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": "default"
+          },
+          {
+            "blankLine": "any",
+            "prev": "case",
+            "next": "default"
+          }
+        ]
+			}
+		}
+  ]
+}
