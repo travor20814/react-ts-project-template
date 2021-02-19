@@ -3,13 +3,13 @@ const {
   DefinePlugin,
   IgnorePlugin,
 } = require('webpack');
-const { merge } = require('webpack-merge');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const dartSass = require('dart-sass');
+const sass = require('sass');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
+const PORT = 7776;
 // const SERVER_PORT_CONFIG = 7777;
 const BUNDLE_ANALYZE_PORT = 7778;
 
@@ -27,13 +27,10 @@ const NODE_MODULES_PATH = path.resolve(__dirname, '..', 'node_modules');
 
 const isProduction = NODE_ENV === 'production';
 
-const commonConfig = {
+module.exports = {
+  mode: isProduction ? 'production' : 'development',
   entry: {
     app: [path.resolve(SRC_PATH, 'main.tsx')],
-  },
-  cache: {
-    type: 'filesystem',
-    cacheDirectory: path.resolve(__dirname, '.webpack_cache'),
   },
   output: {
     clean: true, // use this instead of using clean-webpack-plugin
@@ -73,7 +70,7 @@ const commonConfig = {
           {
             loader: 'sass-loader',
             options: {
-              implementation: dartSass, // 強制使用 dart-sass (而不是 node-sass)
+              implementation: sass, // 強制使用 sass (原名: dart-sass) (而不是 node-sass)
             },
           },
         ],
@@ -177,13 +174,38 @@ const commonConfig = {
       },
     },
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    compress: true,
+    port: PORT,
+    hot: true,
+    stats: {
+      assets: false,
+      children: false,
+      chunks: false,
+      chunkModules: false,
+      colors: true,
+      entrypoints: false,
+      hash: false,
+      modules: false,
+      timings: false,
+      version: false,
+    },
+    historyApiFallback: true,
+    host: '0.0.0.0',
+    disableHostCheck: true,
+  },
   resolve: {
     mainFields: ['browser', 'main', 'module'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
+      'react-dom': '@hot-loader/react-dom',
       '@@core': path.resolve(SRC_PATH, 'core'),
     },
   },
+  /**
+   * Let webpack sourcemap warning shut up, and also turn off source maps, because react-hot-loader.
+   * https://github.com/gaearon/react-hot-loader#source-maps
+   */
+  devtool: false,
 };
-
-module.exports = (config) => merge(config, commonConfig);
