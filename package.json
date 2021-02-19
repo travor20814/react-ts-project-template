@@ -1,7 +1,7 @@
 {
-  "name": "travor-portfolio",
-  "version": "1.0.0",
-  "description": "self portfolio practice",
+  "name": "react-ts-project-template",
+  "version": "1.0.1",
+  "description": "template that you can use to quickly setup react project.",
   "main": "index.js",
   "scripts": {
     "client": "webpack serve --hot --host 0.0.0.0 --config ./client/webpack.config.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/travor20814/travor-portfolio.git"
+    "url": "git+https://github.com/travor20814/react-ts-project-template.git"
   },
   "keywords": [
     "portfolio"
@@ -20,9 +20,9 @@
   "author": "Travor Lee",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/travor20814/travor-portfolio/issues"
+    "url": "https://github.com/travor20814/react-ts-project-template/issues"
   },
-  "homepage": "https://github.com/travor20814/travor-portfolio#readme",
+  "homepage": "https://github.com/travor20814/react-ts-project-template#readme",
   "dependencies": {
     "@types/node": "^14.14.28",
     "react": "^17.0.1",
