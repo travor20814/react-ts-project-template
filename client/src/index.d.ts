@@ -4,7 +4,7 @@ declare const STATIC_HOST: string;
 
 declare module '*.scss' {
   const classes: {
-    [name: string]: string;
+    [key: string]: string;
   };
   export default classes;
 }
@@ -18,3 +18,11 @@ declare module '*.jpg' {
   const image: string;
   export default image;
 }
+
+declare module '*.svg' {
+  const image: string;
+  export default image;
+}
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type FC<Props = {}> = React.FunctionComponent<Props>;

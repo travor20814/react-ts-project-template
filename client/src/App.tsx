@@ -15,4 +15,4 @@ export default hot(() => (
       </Route>
     </Switch>
   </BrowserRouter>
-));
+)) as FC;
