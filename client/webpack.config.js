@@ -7,6 +7,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const sass = require('sass');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const PORT = 7776;
@@ -44,9 +45,9 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
+            loader: 'babel-loader',
             options: {
-              configFileName: path.resolve(__dirname, 'tsconfig.json'),
+              cacheDirectory: true,
             },
           },
         ],
@@ -116,6 +117,9 @@ module.exports = {
       // GRAPHQL_HOST: DefinePlugin.runtimeValue(() => `'${GRAPHQL_HOST}'`, true),
       // STATIC_HOST: DefinePlugin.runtimeValue(() => `'${STATIC_HOST}'`, true),
     }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: { mode: 'write-references' },
+    }),
     new HTMLWebpackPlugin({
       template: path.resolve(SRC_PATH, 'index.html'),
       inject: 'body',
@@ -177,8 +181,11 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
-    port: PORT,
+    disableHostCheck: true,
     hot: true,
+    historyApiFallback: true,
+    host: '0.0.0.0',
+    port: PORT,
     stats: {
       assets: false,
       children: false,
@@ -191,9 +198,6 @@ module.exports = {
       timings: false,
       version: false,
     },
-    historyApiFallback: true,
-    host: '0.0.0.0',
-    disableHostCheck: true,
   },
   resolve: {
     mainFields: ['browser', 'main', 'module'],

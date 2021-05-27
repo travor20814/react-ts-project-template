@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-console */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
