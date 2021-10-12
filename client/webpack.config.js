@@ -30,6 +30,7 @@ const isProduction = NODE_ENV === 'production';
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
+  devtool: 'inline-source-map',
   entry: {
     app: [path.resolve(SRC_PATH, 'main.tsx')],
   },
@@ -140,7 +141,10 @@ module.exports = {
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css',
     }),
-    new IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/,
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: ANALYZE === 'true' ? 'server' : 'disabled',
       analyzerHost: 'localhost',
@@ -178,26 +182,28 @@ module.exports = {
       },
     },
   },
+  stats: {
+    assets: false,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    colors: true,
+    entrypoints: false,
+    hash: false,
+    modules: false,
+    timings: false,
+    version: false,
+  },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    compress: true,
-    disableHostCheck: true,
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+      watch: true,
+    },
+    port: PORT,
     hot: true,
     historyApiFallback: true,
     host: '0.0.0.0',
-    port: PORT,
-    stats: {
-      assets: false,
-      children: false,
-      chunks: false,
-      chunkModules: false,
-      colors: true,
-      entrypoints: false,
-      hash: false,
-      modules: false,
-      timings: false,
-      version: false,
-    },
+    allowedHosts: 'all',
   },
   resolve: {
     mainFields: ['browser', 'main', 'module'],
@@ -207,9 +213,4 @@ module.exports = {
       '@@core': path.resolve(SRC_PATH, 'core'),
     },
   },
-  /**
-   * Let webpack sourcemap warning shut up, and also turn off source maps, because react-hot-loader.
-   * https://github.com/gaearon/react-hot-loader#source-maps
-   */
-  devtool: false,
 };
