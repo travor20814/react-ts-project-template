@@ -97,17 +97,18 @@
         "@typescript-eslint/explicit-module-boundary-types": "off",
 				"react/display-name": 0,
 				"react/jsx-no-target-blank": 0,
+        "react/react-in-jsx-scope": 0,
         "react/prop-types": 0,
         "react/jsx-closing-bracket-location": [
           2,
           {
             "nonEmpty": "after-props",
-            "selfClosing": "after-props"
+            "selfClosing": "line-aligned"
           }
         ],
         "arrow-parens": [
           2,
-          "as-needed",
+          "always",
           {
             "requireForBlockBody": true
           }
