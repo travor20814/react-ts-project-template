@@ -119,7 +119,10 @@ module.exports = {
       // STATIC_HOST: DefinePlugin.runtimeValue(() => `'${STATIC_HOST}'`, true),
     }),
     new ForkTsCheckerWebpackPlugin({
-      typescript: { mode: 'write-references' },
+      typescript: {
+        mode: 'write-references',
+        configFile: path.resolve(__dirname, 'tsconfig.json'),
+      },
     }),
     new HTMLWebpackPlugin({
       template: path.resolve(SRC_PATH, 'index.html'),
