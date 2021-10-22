@@ -14,7 +14,8 @@
       }
     ],
     "paths": {
-      "@@core/*": ["src/core/*"]
+      "@@theme/*": ["src/theme/*"],
+      "@@pages/*": ["src/pages/*"]
     }
   },
   "include": ["./src"]

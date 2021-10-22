@@ -24,19 +24,41 @@ const {
 } = process.env;
 
 const SRC_PATH = path.resolve(__dirname, 'src');
+const PAGES_PATH = path.resolve(__dirname, 'src/pages');
+const THEME_PATH = path.resolve(__dirname, 'src/theme');
 const NODE_MODULES_PATH = path.resolve(__dirname, '..', 'node_modules');
 
 const isProduction = NODE_ENV === 'production';
 
+const sassRegex = /\.(css|scss|sass)$/;
+const sassModuleRegex = /\.module\.(css|scss|sass)$/;
+
+const getSassLoaders = (cssOptions) => [
+  'style-loader',
+  {
+    loader: 'css-loader',
+    ...(cssOptions ? {
+      options: cssOptions,
+    } : {}),
+  },
+  {
+    loader: 'sass-loader',
+    options: {
+      implementation: sass,
+      sourceMap: false,
+    },
+  },
+];
+
 module.exports = {
   mode: isProduction ? 'production' : 'development',
-  devtool: 'inline-source-map',
+  devtool: isProduction ? false : 'cheap-module-source-map',
   entry: {
     app: [path.resolve(SRC_PATH, 'main.tsx')],
   },
   output: {
     clean: true, // use this instead of using clean-webpack-plugin
-    filename: '[id].[contenthash].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/', // HTML 中的引用起始路徑
   },
@@ -56,32 +78,18 @@ module.exports = {
         include: [SRC_PATH],
       },
       {
-        test: /\.(css|s[ac]ss)$/,
-        include: [SRC_PATH],
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: {
-                localIdentName: `${isProduction ? '' : '[name]__[local]--'}[hash:base64:5]`,
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: sass, // 強制使用 sass (原名: dart-sass) (而不是 node-sass)
-            },
-          },
-        ],
+        test: sassRegex,
+        exclude: sassModuleRegex,
+        use: getSassLoaders(),
       },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-        include: [NODE_MODULES_PATH],
-        exclude: [SRC_PATH],
+        test: sassModuleRegex,
+        use: getSassLoaders({
+          importLoaders: 1,
+          modules: {
+            localIdentName: `${isProduction ? '' : '[name]__[local]--'}[hash:base64:5]`,
+          },
+        }),
       },
       {
         test: /\.(jpe?g|png|gif|svg|mp4|mjpeg|zip)$/i,
@@ -210,10 +218,11 @@ module.exports = {
   },
   resolve: {
     mainFields: ['browser', 'main', 'module'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
+      '@@theme': THEME_PATH,
+      '@@pages': PAGES_PATH,
       'react-dom': '@hot-loader/react-dom',
-      '@@core': path.resolve(SRC_PATH, 'core'),
     },
   },
 };

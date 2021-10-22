@@ -5,13 +5,15 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import './main.scss';
+
+import '@@theme/main.scss';
+import Login from '@@pages/Login/Login';
 
 export default hot(() => (
   <BrowserRouter>
     <Switch>
       <Route path="/">
-        Hello world!
+        <Login />
       </Route>
     </Switch>
   </BrowserRouter>
