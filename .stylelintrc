@@ -55,7 +55,8 @@
            "mixin",
            "return",
            "while",
-           "use"
+           "use",
+           "error"
           ]
       }
     ]
