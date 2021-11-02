@@ -83,7 +83,7 @@
 			},
 			"globals": {
 				"NODE_ENV": "readonly",
-				"GRAPHQL_HOST": "readonly",
+				"SERVER_HOST": "readonly",
         "STATIC_HOST": "readonly"
 			},
 			"settings": {
@@ -99,6 +99,8 @@
 				"react/jsx-no-target-blank": 0,
         "react/react-in-jsx-scope": 0,
         "react/prop-types": 0,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "react/jsx-closing-bracket-location": [
           2,
           {
