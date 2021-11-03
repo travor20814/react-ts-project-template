@@ -94,13 +94,33 @@
 			},
 			"rules": {
         "jsx-a11y/label-has-associated-control": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-module-boundary-types": ["error"],
 				"react/display-name": 0,
 				"react/jsx-no-target-blank": 0,
         "react/react-in-jsx-scope": 0,
         "react/prop-types": 0,
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-indent": [2, 2],
+        "indent": [
+          "error",
+          2,
+          {
+            "SwitchCase": 1,
+            "MemberExpression": 1
+          }
+        ],
+        "spaced-comment": ["error", "always", {
+          "line": {
+              "markers": ["/"],
+              "exceptions": ["-", "+"]
+          },
+          "block": {
+              "markers": ["!"],
+              "exceptions": ["*"],
+              "balanced": true
+          }
+        }],
         "react/jsx-closing-bracket-location": [
           2,
           {
