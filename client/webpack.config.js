@@ -206,6 +206,7 @@ module.exports = {
     version: false,
   },
   devServer: {
+    open: `http://localhost:${PORT}`,
     static: {
       directory: path.resolve(__dirname, 'dist'),
       watch: true,
