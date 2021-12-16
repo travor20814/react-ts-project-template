@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family: 'PingFang TC', 'Open Sans', '微軟正黑體', sans-serif;
   outline: none;
+  touch-action: manipulation;
 }
 
 html,
@@ -36,10 +37,26 @@ button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+/* stylelint-disable property-no-vendor-prefix */
 input {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  background-color: transparent;
   border-radius: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+// for input auto complete
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #1a1a1a;
+  box-shadow: 0 0 0 30px #fff inset;
 }
 
 textarea {

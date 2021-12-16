@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-function render() {
+function render(): void {
   const root = document.getElementById('root');
 
   if (root) {
@@ -13,7 +13,7 @@ function render() {
   }
 }
 
-export async function init() {
+export async function init(): Promise<void> {
   render();
 }
 
