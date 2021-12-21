@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import {
   BrowserRouter,
-  Switch,
+  Routes,
   Route,
 } from 'react-router-dom';
 
@@ -11,10 +11,8 @@ import Login from '@@pages/Login/Login';
 
 export default hot(() => (
   <BrowserRouter>
-    <Switch>
-      <Route path="/">
-        <Login />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
   </BrowserRouter>
 )) as FC;
