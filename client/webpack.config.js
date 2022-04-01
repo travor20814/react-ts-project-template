@@ -93,16 +93,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg|mp4|mjpeg|zip)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              hash: 'sha512',
-              digest: 'hex',
-              name: '[hash].[ext]',
-            },
-          },
-        ],
+        type: 'asset/resource',
         include: [SRC_PATH],
       },
       {
