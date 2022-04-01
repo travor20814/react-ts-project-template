@@ -9,10 +9,14 @@ import {
 import '@@theme/main.scss';
 import Login from '@@pages/Login/Login';
 
-export default hot(() => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Login />} />
-    </Routes>
-  </BrowserRouter>
-)) as FC;
+function App(): JSX.Element {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default hot(App);
