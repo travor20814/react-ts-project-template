@@ -223,7 +223,6 @@ module.exports = {
     alias: {
       '@@theme': THEME_PATH,
       '@@pages': PAGES_PATH,
-      'react-dom': '@hot-loader/react-dom',
     },
   },
 };

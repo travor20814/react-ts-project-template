@@ -95,6 +95,7 @@
 			"rules": {
         "jsx-a11y/label-has-associated-control": "off",
         "@typescript-eslint/explicit-module-boundary-types": ["error"],
+        "@typescript-eslint/space-before-blocks": "off",
 				"react/display-name": 0,
 				"react/jsx-no-target-blank": 0,
         "react/react-in-jsx-scope": 0,

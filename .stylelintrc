@@ -10,7 +10,10 @@
   ],
   "rules": {
     "color-hex-case": "lower",
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
 		"indentation": 2,
+    "string-quotes": "single",
     "at-rule-empty-line-before": [
       "always",
       {
