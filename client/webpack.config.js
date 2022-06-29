@@ -26,6 +26,12 @@ const {
 const SRC_PATH = path.resolve(__dirname, 'src');
 const PAGES_PATH = path.resolve(__dirname, 'src/pages');
 const THEME_PATH = path.resolve(__dirname, 'src/theme');
+const CORE_PATH = path.resolve(__dirname, 'src/core');
+const ASSETS_PATH = path.resolve(__dirname, 'src/assets');
+const ROUTES_PATH = path.resolve(__dirname, 'src/routes');
+const STORE_PATH = path.resolve(__dirname, 'src/store');
+const LOCALE_PATH = path.resolve(__dirname, 'src/locales');
+const HOOKS_PATH = path.resolve(__dirname, 'src/hooks');
 const NODE_MODULES_PATH = path.resolve(__dirname, '..', 'node_modules');
 
 const isProduction = NODE_ENV === 'production';
@@ -207,6 +213,13 @@ module.exports = {
     historyApiFallback: true,
     host: '0.0.0.0',
     allowedHosts: 'all',
+    proxy: {
+      '/api': {
+        target: '/',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
   resolve: {
     mainFields: ['browser', 'main', 'module'],
@@ -214,6 +227,12 @@ module.exports = {
     alias: {
       '@@theme': THEME_PATH,
       '@@pages': PAGES_PATH,
+      '@@core': CORE_PATH,
+      '@@assets': ASSETS_PATH,
+      '@@routes': ROUTES_PATH,
+      '@@store': STORE_PATH,
+      '@@locales': LOCALE_PATH,
+      '@@hooks': HOOKS_PATH,
     },
   },
 };

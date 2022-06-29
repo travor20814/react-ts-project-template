@@ -15,7 +15,13 @@
     ],
     "paths": {
       "@@theme/*": ["src/theme/*"],
-      "@@pages/*": ["src/pages/*"]
+      "@@pages/*": ["src/pages/*"],
+      "@@core/*": ["src/core/*"],
+      "@@assets/*": ["src/assets/*"],
+      "@@routes/*": ["src/routes/*"],
+      "@@store/*": ["src/store/*"],
+      "@@locales/*": ["src/locales/*"],
+      "@@hooks/*": ["src/hooks/*"]
     }
   },
   "include": ["./src"]
