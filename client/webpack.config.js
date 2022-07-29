@@ -201,6 +201,7 @@ module.exports = {
     modules: false,
     timings: false,
     version: false,
+    loggingDebug: ['sass-loader'], // 允許 sass 使用 @debug
   },
   devServer: {
     open: `http://localhost:${PORT}`,
