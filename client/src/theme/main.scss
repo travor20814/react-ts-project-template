@@ -1,9 +1,149 @@
+@use 'sass:string';
 @use '~@mezzanine-ui/system' as mzn-system;
+@use '~@mezzanine-ui/system/typography' as mzn-typography;
 @use '~@mezzanine-ui/core' as mzn-core;
 
+$custom-palette: (
+  light: (
+    primary: #2A4B95,
+    primary-light: #FFFFFF,
+    primary-dark: #2A4B95,
+    secondary: #242424,
+    secondary-light: #242424,
+    secondary-dark: #242424,
+    error: #C44C41,
+    error-light: #C44C41,
+    error-dark: #C44C41,
+    text-primary: #242424,
+    text-secondary: #727272,
+    text-disabled: #BFBFBF,
+    border: #727272,
+    divider: #727272,
+    action-active: #242424,
+    action-inactive: #727272,
+    action-disabled: #BFBFBF,
+    action-disabled-bg: #E5E5E5,
+  ),
+);
+
+$custom-variables: (
+  typography: (
+    base: (
+      font-family: string.unquote('PingFang TC, Microsoft JhengHei'),
+    ),
+    h1: (
+      font-size: mzn-typography.px-to-rem(32px),
+      font-weight: 600,
+      letter-spacing: mzn-typography.px-to-em(4px),
+      line-height: mzn-typography.px-to-rem(48px),
+    ),
+    h2: (
+      font-size: mzn-typography.px-to-rem(24px),
+      font-weight: 600,
+      letter-spacing: mzn-typography.px-to-em(2px),
+      line-height: mzn-typography.px-to-rem(36px),
+    ),
+    h3: (
+      font-size: mzn-typography.px-to-rem(22px),
+      font-weight: 500,
+      letter-spacing: mzn-typography.px-to-em(2px),
+      line-height: mzn-typography.px-to-rem(32px),
+    ),
+    h4: (
+      font-size: mzn-typography.px-to-rem(18px),
+      font-weight: 500,
+      letter-spacing: mzn-typography.px-to-em(1px),
+      line-height: mzn-typography.px-to-rem(28px),
+    ),
+    h5: (
+      font-size: mzn-typography.px-to-rem(15px),
+      font-weight: 500,
+      letter-spacing: 0,
+      line-height: mzn-typography.px-to-rem(24px),
+    ),
+    h6: (
+      font-size: mzn-typography.px-to-rem(13px),
+      font-weight: 500,
+      letter-spacing: 0,
+      line-height: mzn-typography.px-to-rem(20px),
+    ),
+    button1: (
+      font-size: mzn-typography.px-to-rem(15px),
+      font-weight: 500,
+      letter-spacing: mzn-typography.px-to-em(2px),
+      line-height: mzn-typography.px-to-rem(40px),
+    ),
+    button2: (
+      font-size: mzn-typography.px-to-rem(15px),
+      font-weight: 500,
+      letter-spacing: mzn-typography.px-to-em(2px),
+      line-height: mzn-typography.px-to-rem(32px),
+    ),
+    button3: (
+      font-size: mzn-typography.px-to-rem(13px),
+      font-weight: 500,
+      letter-spacing: mzn-typography.px-to-em(1px),
+      line-height: mzn-typography.px-to-rem(24px),
+    ),
+    input1: (
+      font-size: mzn-typography.px-to-rem(15px),
+      font-weight: 400,
+      letter-spacing: mzn-typography.px-to-em(1px),
+      line-height: mzn-typography.px-to-rem(40px),
+    ),
+    input2: (
+      font-size: mzn-typography.px-to-rem(15px),
+      font-weight: 400,
+      letter-spacing: mzn-typography.px-to-em(1px),
+      line-height: mzn-typography.px-to-rem(32px),
+    ),
+    input3: (
+      font-size: mzn-typography.px-to-rem(13px),
+      font-weight: 400,
+      letter-spacing: 0,
+      line-height: mzn-typography.px-to-rem(24px),
+    ),
+    body1: (
+      font-size: mzn-typography.px-to-rem(15px),
+      font-weight: 400,
+      letter-spacing: 0,
+      line-height: mzn-typography.px-to-rem(24px),
+    ),
+    body2: (
+      font-size: mzn-typography.px-to-rem(13px),
+      font-weight: 400,
+      letter-spacing: 0,
+      line-height: mzn-typography.px-to-rem(20px),
+    ),
+    caption: (
+      font-size: mzn-typography.px-to-rem(12px),
+      font-weight: 400,
+      letter-spacing: 0,
+      line-height: mzn-typography.px-to-rem(16px),
+    ),
+  ),
+  motion: (
+    durations: (
+      shortest: 150ms,
+      shorter: 200ms,
+      short: 250ms,
+      standard: 300ms,
+      long: 375ms,
+    ),
+    easings: (
+      standard: cubic-bezier(0.58, 0.01, 0.29, 1.01),
+      emphasized: cubic-bezier(0.83, 0, 0.17, 1),
+      decelerated: cubic-bezier(0, 0, 0.3, 1),
+      accelerated: cubic-bezier(0.32, 0, 0.67, 0),
+    ),
+  ),
+  spacing: (4px, 8px, 12px, 16px, 24px, 32px, 40px, 48px, 64px, 96px, 160px),
+  z-index: 1000,
+);
+
 :root {
-  @include mzn-system.common-variables();
-  @include mzn-system.palette();
+  @include mzn-system.common-variables($custom-variables);
+  @include mzn-system.palette('light', $custom-palette);
 }
 
 @include mzn-core.styles();
